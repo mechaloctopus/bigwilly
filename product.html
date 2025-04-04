@@ -495,6 +495,21 @@
             color: #fff;
         }
         
+        .buy-now {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: var(--text-light);
+            width: 100%;
+            font-size: 1.2rem;
+            letter-spacing: 0.5px;
+        }
+        
+        .payment-note {
+            text-align: center;
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        
         .payment-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
@@ -957,15 +972,13 @@
                         <div class="price-display">$175.00</div>
                         
                         <div class="checkout-section">
-                            <h2>Express Checkout</h2>
+                            <h2>Place Your Order</h2>
                             <div class="payment-options">
-                                <button class="payment-btn google-pay">
-                                    Pay with Google Pay
-                                </button>
-                                <button class="payment-btn cash-app">
-                                    Pay with Cash App
+                                <button id="buy-now-btn" class="payment-btn buy-now">
+                                    Buy Now
                                 </button>
                             </div>
+                            <p class="payment-note">We accept Google Pay and Cash App</p>
                         </div>
                     </div>
                 </div>
@@ -1089,6 +1102,15 @@
                 });
             });
             
+            // Buy Now button event
+            const buyNowBtn = document.getElementById('buy-now-btn');
+            if (buyNowBtn && !buyNowBtn.classList.contains('disabled')) {
+                buyNowBtn.addEventListener('click', function() {
+                    // Redirect to order form with product info
+                    window.location.href = `order.html?product=${productId}&size=${selectedSize}&price=${selectedPrice.toFixed(2)}`;
+                });
+            }
+            
             // Payment button events
             if (googlePayBtn && !googlePayBtn.classList.contains('disabled')) {
                 googlePayBtn.addEventListener('click', function() {
@@ -1192,16 +1214,16 @@
         }
         
         function disablePaymentOptions() {
-            const paymentButtons = document.querySelectorAll('.payment-btn');
-            paymentButtons.forEach(btn => {
-                btn.classList.add('disabled');
-                btn.setAttribute('disabled', true);
+            const buyNowBtn = document.getElementById('buy-now-btn');
+            if (buyNowBtn) {
+                buyNowBtn.classList.add('disabled');
+                buyNowBtn.setAttribute('disabled', true);
                 
-                btn.addEventListener('click', function(e) {
+                buyNowBtn.addEventListener('click', function(e) {
                     e.preventDefault();
                     alert('Sorry, this product is currently out of stock.');
                 });
-            });
+            }
         }
         
         function disableSizeOptions() {

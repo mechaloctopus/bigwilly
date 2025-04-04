@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Your Order - Big Willy's Fabric Dye Emporium</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            // Initialize EmailJS with your Public Key (Replace with your actual key)
+            emailjs.init("YOUR_PUBLIC_KEY");
+        })();
+    </script>
+    <style>
+        :root {
+            --primary: #3a0068;
+            --primary-light: #590d8c;
+            --primary-dark: #2a0048;
+            --secondary: #f8f8fc;
+            --accent: #b388ff;
+            --accent-light: #d4b3ff;
+            --text-dark: #333;
+            --text-light: #fff;
+            --text-muted: #666;
+            --spacing: 1rem;
+            --border-radius: 10px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+            --max-width: 1200px;
+            --section-gap: 2.5rem;
+            --yellow: #ffc107;
+            --green: #4caf50;
+            --orange: #ff9800;
+            --blue: #2196f3;
+            --purple: #9c27b0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: var(--secondary);
+            color: var(--text-dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing);
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--text-light);
+            padding: 1.25rem var(--spacing);
+            box-shadow: var(--shadow-lg);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        .logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            position: relative;
+            background-color: transparent;
+            box-shadow: 0 0 20px rgba(179, 136, 255, 0.3);
+            border: 2px solid var(--accent);
+            transform: translateZ(0);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .logo img {
+            width: 120%;
+            height: 120%;
+            object-fit: cover;
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            transform: scale(1.2);
+        }
+        
+        .brand-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(to right, var(--accent), var(--text-light));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        /* Main Content Styles */
+        main {
+            padding: 3rem 0;
+            flex: 1;
+        }
+        
+        /* Breadcrumbs */
+        .breadcrumbs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        
+        .breadcrumbs a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .breadcrumbs a:hover {
+            color: var(--primary-light);
+            text-decoration: underline;
+        }
+        
+        .breadcrumbs .separator {
+            color: var(--text-muted);
+        }
+        
+        /* Order Form */
+        .order-form-container {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-lg);
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+            max-width: 800px;
+            margin: 0 auto;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-title {
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            color: var(--primary);
+            text-align: center;
+            position: relative;
+        }
+        
+        .form-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+        
+        .order-summary {
+            background-color: rgba(179, 136, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 2rem;
+            border-left: 3px solid var(--accent);
+        }
+        
+        .summary-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+            color: var(--primary);
+        }
+        
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        
+        .summary-total {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.2rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            padding-top: 0.75rem;
+            margin-top: 0.75rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            transition: var(--transition);
+            background-color: #fff;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(179, 136, 255, 0.2);
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        .form-submit {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: var(--text-light);
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            display: block;
+            width: 100%;
+            margin-top: 1.5rem;
+        }
+        
+        .form-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .order-confirmation {
+            display: none;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-lg);
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+            max-width: 800px;
+            margin: 0 auto;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+        
+        .confirmation-title {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+        
+        .order-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            background-color: rgba(179, 136, 255, 0.1);
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            margin: 1.5rem 0;
+            letter-spacing: 2px;
+        }
+        
+        .payment-instructions {
+            background-color: rgba(76, 175, 80, 0.1);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            margin: 1.5rem 0;
+            border-left: 3px solid var(--green);
+            text-align: left;
+        }
+        
+        .payment-instructions h3 {
+            color: var(--green);
+            margin-bottom: 0.75rem;
+        }
+        
+        .payment-amount {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            background-color: rgba(179, 136, 255, 0.1);
+            padding: 0.75rem;
+            border-radius: var(--border-radius);
+            margin: 1rem 0;
+            display: inline-block;
+        }
+        
+        .shipping-preview {
+            background-color: rgba(33, 150, 243, 0.05);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            margin: 1.5rem 0;
+            border-left: 3px solid var(--blue);
+            text-align: left;
+        }
+        
+        .shipping-preview h3 {
+            color: var(--blue);
+            margin-bottom: 0.75rem;
+        }
+        
+        .shipping-label-preview {
+            background-color: white;
+            border: 1px dashed var(--text-muted);
+            padding: 1.25rem;
+            border-radius: var(--border-radius);
+            font-family: 'Courier New', monospace;
+            position: relative;
+        }
+        
+        .shipping-label-preview::after {
+            content: 'PREVIEW';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-30deg);
+            font-size: 3rem;
+            opacity: 0.1;
+            font-weight: bold;
+            pointer-events: none;
+            color: var(--primary);
+        }
+        
+        .order-success {
+            display: none;
+            background-color: rgba(76, 175, 80, 0.1);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            margin: 1.5rem 0;
+            border-left: 3px solid var(--green);
+            text-align: center;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .order-success h3 {
+            color: var(--green);
+            margin-bottom: 1rem;
+        }
+        
+        .checkmark {
+            display: inline-block;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: var(--green);
+            position: relative;
+            margin-bottom: 1.5rem;
+            transform: scale(0);
+            animation: scaleIn 0.5s ease-in-out forwards;
+            animation-delay: 0.3s;
+        }
+        
+        @keyframes scaleIn {
+            from { transform: scale(0); }
+            to { transform: scale(1); }
+        }
+        
+        .checkmark:after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 20px;
+            border-bottom: 5px solid white;
+            border-right: 5px solid white;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -60%) rotate(45deg);
+        }
+        
+        .payment-options-list {
+            margin: 1.5rem 0;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+        
+        .payment-option {
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            background-color: #fff;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 150px;
+        }
+        
+        .payment-option h4 {
+            margin: 0.5rem 0;
+        }
+        
+        .final-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .final-submit {
+            background-color: var(--green);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            flex: 1;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .final-submit:hover {
+            background-color: #3d8b40;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        
+        .edit-order {
+            background-color: var(--text-muted);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .edit-order:hover {
+            background-color: #555;
+        }
+        
+        .print-invoice {
+            margin-top: 1.5rem;
+            background-color: var(--primary-light);
+            color: var(--text-light);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .print-invoice:hover {
+            background-color: var(--primary);
+        }
+        
+        .invoice-template {
+            display: none;
+        }
+        
+        /* Footer Styles */
+        footer {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--text-light);
+            padding: 1.5rem 0;
+            text-align: center;
+            margin-top: auto;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+        
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .order-form-container,
+            .order-confirmation {
+                padding: 1.5rem;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .payment-options-list {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .payment-option {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="header-left">
+                    <a href="index.html">
+                        <div class="logo"><img src="jesus.png" alt="Big Willy's Logo"></div>
+                    </a>
+                    <div class="brand-name">Big Willy's Fabric Dye Emporium</div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <div class="container">
+            <div class="breadcrumbs">
+                <a href="index.html">Home</a>
+                <span class="separator">›</span>
+                <a id="product-link" href="#">Product</a>
+                <span class="separator">›</span>
+                <span>Order Form</span>
+            </div>
+            
+            <div id="order-form-container" class="order-form-container">
+                <h2 class="form-title">Complete Your Order</h2>
+                
+                <div class="order-summary">
+                    <h3 class="summary-title">Order Summary</h3>
+                    <div class="summary-item">
+                        <span id="product-name">Product Name</span>
+                        <span id="product-size">Size</span>
+                    </div>
+                    <div class="summary-total">
+                        <span>Total:</span>
+                        <span id="product-price">$0.00</span>
+                    </div>
+                </div>
+                
+                <form id="order-form">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="address">Street Address</label>
+                        <input type="text" id="address" name="address" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <input type="text" id="city" name="city" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="state">State/Province</label>
+                            <input type="text" id="state" name="state" class="form-control" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="zip">Zip/Postal Code</label>
+                            <input type="text" id="zip" name="zip" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="country">Country</label>
+                            <input type="text" id="country" name="country" class="form-control" required value="United States">
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="form-submit">Review Order</button>
+                </form>
+            </div>
+            
+            <div id="order-confirmation" class="order-confirmation">
+                <h2 class="confirmation-title">Order Confirmation</h2>
+                <p>Please review your order details below and verify your shipping information.</p>
+                
+                <h3>Your Order Number:</h3>
+                <div class="order-number" id="display-order-number">BW-12345</div>
+                
+                <div class="shipping-preview">
+                    <h3>Shipping Label Preview:</h3>
+                    <p>Please verify that your shipping information is correct:</p>
+                    <div class="shipping-label-preview" id="shipping-label-preview">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="payment-instructions">
+                    <h3>Payment Instructions:</h3>
+                    <p>Please complete your payment using either Google Pay or Cash App. <strong>Important:</strong> Include <strong>ONLY</strong> your order number in the payment notes/comments section.</p>
+                    
+                    <p><strong>Exact amount to pay:</strong></p>
+                    <div class="payment-amount" id="payment-amount">$0.00</div>
+                    
+                    <p>Your order will be processed once payment is received. If payment is not received within 24 hours, your order will be automatically canceled.</p>
+                </div>
+                
+                <div class="payment-options-list">
+                    <div class="payment-option">
+                        <h4>Google Pay</h4>
+                        <p>Send to: <strong>bigwillys@gmail.com</strong></p>
+                    </div>
+                    
+                    <div class="payment-option">
+                        <h4>Cash App</h4>
+                        <p>Send to: <strong>$BigWillys</strong></p>
+                    </div>
+                </div>
+                
+                <div class="final-buttons">
+                    <button id="final-submit" class="final-submit">Submit Final Order</button>
+                    <button id="edit-order" class="edit-order">Edit Order</button>
+                </div>
+                
+                <div id="order-success" class="order-success">
+                    <div class="checkmark"></div>
+                    <h3>Order Successfully Submitted!</h3>
+                    <p>Your order has been sent to our shipping department. Please complete your payment as instructed above to finalize your order.</p>
+                    <p>An email confirmation has been sent to the shipper with your order details.</p>
+                </div>
+                
+                <button id="print-invoice" class="print-invoice" style="margin-top: 1rem;">Print Order Details</button>
+            </div>
+            
+            <div id="invoice-template" class="invoice-template">
+                <!-- This will be populated with JavaScript and used for printing -->
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p class="copyright">© 2023 Big Willy's Fabric Dye Emporium. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('product') || '';
+            const productSize = urlParams.get('size') || '';
+            const productPrice = urlParams.get('price') || '';
+            
+            // Product database (simplified version of what's in product.html)
+            const products = {
+                'purple-jesus': {
+                    name: 'Purple Jesus Fabric Dye',
+                    basePrice: 175,
+                    link: 'product.html?product=purple-jesus'
+                },
+                'yellow-buddha': {
+                    name: 'Yellow Buddha Fabric Dye',
+                    basePrice: 165,
+                    link: 'product.html?product=yellow-buddha'
+                },
+                'green-tarzan': {
+                    name: 'Green Tarzan Fabric Dye',
+                    basePrice: 170,
+                    link: 'product.html?product=green-tarzan'
+                },
+                'orange-thoth': {
+                    name: 'Orange Thoth Fabric Dye',
+                    basePrice: 160,
+                    link: 'product.html?product=orange-thoth'
+                },
+                'blue-osiris': {
+                    name: 'Blue Osiris Fabric Dye',
+                    basePrice: 180,
+                    link: 'product.html?product=blue-osiris'
+                }
+            };
+            
+            // If we have a valid product, populate the order summary
+            if (productId && products[productId]) {
+                const product = products[productId];
+                
+                // Set product link in breadcrumb
+                const productLink = document.getElementById('product-link');
+                productLink.href = product.link;
+                productLink.textContent = product.name;
+                
+                // Set order summary
+                document.getElementById('product-name').textContent = product.name;
+                document.getElementById('product-size').textContent = productSize;
+                document.getElementById('product-price').textContent = `$${productPrice}`;
+            } else {
+                // If no valid product, redirect to home
+                window.location.href = 'index.html';
+            }
+            
+            // Handle form submission
+            const orderForm = document.getElementById('order-form');
+            let currentOrderData = null;
+            let orderNumber = null;
+            
+            orderForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Generate order number
+                orderNumber = generateOrderNumber();
+                
+                // Get form data
+                const formData = new FormData(orderForm);
+                currentOrderData = {
+                    orderNumber: orderNumber,
+                    product: document.getElementById('product-name').textContent,
+                    size: document.getElementById('product-size').textContent,
+                    price: document.getElementById('product-price').textContent,
+                    customerName: formData.get('name'),
+                    email: formData.get('email'),
+                    phone: formData.get('phone'),
+                    address: formData.get('address'),
+                    city: formData.get('city'),
+                    state: formData.get('state'),
+                    zip: formData.get('zip'),
+                    country: formData.get('country'),
+                    orderDate: new Date().toISOString(),
+                    status: 'Pending Payment'
+                };
+                
+                // Display order number in confirmation
+                document.getElementById('display-order-number').textContent = orderNumber;
+                
+                // Show confirmation, hide form
+                document.getElementById('order-form-container').style.display = 'none';
+                document.getElementById('order-confirmation').style.display = 'block';
+                
+                // Display exact payment amount
+                document.getElementById('payment-amount').textContent = currentOrderData.price;
+                
+                // Prepare shipping label preview
+                updateShippingLabelPreview(currentOrderData);
+                
+                // Prepare invoice template
+                prepareInvoice(currentOrderData);
+            });
+            
+            // Edit order button
+            document.getElementById('edit-order').addEventListener('click', function() {
+                document.getElementById('order-form-container').style.display = 'block';
+                document.getElementById('order-confirmation').style.display = 'none';
+            });
+            
+            // Final submit button
+            document.getElementById('final-submit').addEventListener('click', function() {
+                if (currentOrderData) {
+                    // Update status
+                    currentOrderData.status = 'Order Submitted';
+                    
+                    // Store the order data
+                    storeOrderData(currentOrderData);
+                    
+                    // Send email to shipper
+                    sendOrderEmail(currentOrderData);
+                    
+                    // Hide the buttons after submission
+                    document.querySelector('.final-buttons').style.display = 'none';
+                    
+                    // Show success message
+                    document.getElementById('order-success').style.display = 'block';
+                    
+                    // Scroll to the success message
+                    document.getElementById('order-success').scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+            
+            // Print invoice button
+            document.getElementById('print-invoice').addEventListener('click', function() {
+                printInvoice();
+            });
+            
+            // Helper functions
+            function generateOrderNumber() {
+                const timestamp = new Date().getTime().toString().slice(-6);
+                const random = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
+                return `BW-${timestamp}${random}`;
+            }
+            
+            function updateShippingLabelPreview(orderData) {
+                const shippingLabelPreview = document.getElementById('shipping-label-preview');
+                
+                shippingLabelPreview.innerHTML = `
+                    <div style="padding: 10px; border-bottom: 1px solid #ccc; margin-bottom: 15px; font-weight: bold;">
+                        BIG WILLY'S FABRIC DYE EMPORIUM
+                    </div>
+                    
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+                        <div>
+                            <strong>ORDER #:</strong> ${orderData.orderNumber}<br>
+                            <strong>DATE:</strong> ${new Date().toLocaleDateString()}
+                        </div>
+                        <div>
+                            <strong>PRODUCT:</strong> ${orderData.product}<br>
+                            <strong>SIZE:</strong> ${orderData.size}
+                        </div>
+                    </div>
+                    
+                    <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 15px;">
+                        <strong>SHIP TO:</strong><br>
+                        ${orderData.customerName}<br>
+                        ${orderData.address}<br>
+                        ${orderData.city}, ${orderData.state} ${orderData.zip}<br>
+                        ${orderData.country}
+                    </div>
+                    
+                    <div style="font-size: 0.8em; color: #666;">
+                        This label will be used for shipping your order. Please verify the address is correct.
+                    </div>
+                `;
+            }
+            
+            function storeOrderData(orderData) {
+                // In a real implementation, this would send data to a server/database
+                // For this demo, we'll store in localStorage
+                const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+                orders.push(orderData);
+                localStorage.setItem('orders', JSON.stringify(orders));
+                
+                // In production, you would use something like:
+                // fetch('https://your-google-form-endpoint', {
+                //     method: 'POST',
+                //     body: JSON.stringify(orderData),
+                //     headers: { 'Content-Type': 'application/json' }
+                // });
+            }
+            
+            function sendOrderEmail(orderData) {
+                // Show loading message
+                alert('Submitting your order, please wait...');
+                
+                // Use EmailJS to send email to the shipper
+                emailjs.send("default_service", "order_template", {
+                    order_number: orderData.orderNumber,
+                    customer_name: orderData.customerName,
+                    customer_email: orderData.email,
+                    customer_phone: orderData.phone,
+                    shipping_address: `${orderData.address}, ${orderData.city}, ${orderData.state} ${orderData.zip}, ${orderData.country}`,
+                    product: orderData.product,
+                    size: orderData.size,
+                    price: orderData.price,
+                    date: new Date().toLocaleDateString()
+                }).then(function(response) {
+                    console.log("Email sent successfully:", response);
+                    alert('Your order has been successfully submitted! Please complete your payment as instructed to finalize your order.');
+                }, function(error) {
+                    console.log("Error sending email:", error);
+                    alert('There was an issue submitting your order. Please try again or contact us directly.');
+                });
+                
+                // For development purposes, also log to console
+                console.log('Order data for shipper:', orderData);
+            }
+            
+            function prepareInvoice(orderData) {
+                const invoiceTemplate = document.getElementById('invoice-template');
+                
+                // Create invoice HTML with shipping label info repeated twice
+                invoiceTemplate.innerHTML = `
+                    <div class="invoice">
+                        <h2>Order Invoice</h2>
+                        <p>Order #: ${orderData.orderNumber}</p>
+                        <p>Date: ${new Date().toLocaleDateString()}</p>
+                        
+                        <div class="invoice-address">
+                            <h3>Ship To:</h3>
+                            <p>${orderData.customerName}</p>
+                            <p>${orderData.address}</p>
+                            <p>${orderData.city}, ${orderData.state} ${orderData.zip}</p>
+                            <p>${orderData.country}</p>
+                        </div>
+                        
+                        <div class="invoice-details">
+                            <h3>Order Details:</h3>
+                            <p>Product: ${orderData.product}</p>
+                            <p>Size: ${orderData.size}</p>
+                            <p>Price: ${orderData.price}</p>
+                        </div>
+                        
+                        <hr>
+                        
+                        <div class="shipping-label">
+                            <h3>Shipping Label</h3>
+                            <p>${orderData.customerName}</p>
+                            <p>${orderData.address}</p>
+                            <p>${orderData.city}, ${orderData.state} ${orderData.zip}</p>
+                            <p>${orderData.country}</p>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            function printInvoice() {
+                const invoiceContent = document.getElementById('invoice-template').innerHTML;
+                const printWindow = window.open('', '_blank');
+                
+                printWindow.document.write(`
+                    <html>
+                    <head>
+                        <title>Order Invoice - ${document.getElementById('display-order-number').textContent}</title>
+                        <style>
+                            body { font-family: Arial, sans-serif; line-height: 1.6; }
+                            .invoice { padding: 20px; }
+                            .invoice-address, .invoice-details, .shipping-label { margin: 20px 0; }
+                            hr { margin: 30px 0; border: 1px dashed #ccc; }
+                            @media print {
+                                body { margin: 0; padding: 15px; }
+                                button { display: none; }
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        ${invoiceContent}
+                        <button onclick="window.print();setTimeout(function(){window.close();}, 500)">Print</button>
+                    </body>
+                    </html>
+                `);
+                
+                printWindow.document.close();
+            }
+        });
+    </script>
+</body>
+</html> 
