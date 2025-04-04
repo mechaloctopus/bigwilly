@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Big Willy's Fabric Dye Emporium - Purple Jesus Fabric Dye</title>
+    <style>
+        :root {
+            --primary: #3a0068;
+            --primary-light: #590d8c;
+            --secondary: #f5f5f5;
+            --accent: #ffd700;
+            --text-dark: #333;
+            --text-light: #fff;
+            --spacing: 1rem;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--secondary);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing);
+        }
+        
+        header {
+            background-color: var(--primary);
+            color: var(--text-light);
+            padding: var(--spacing);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 1.5rem;
+        }
+        
+        .logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            position: relative;
+            background-color: var(--secondary);
+            box-shadow: var(--shadow);
+        }
+        
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        
+        .brand-name {
+            font-size: 2rem;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        
+        main {
+            padding: 2rem 0;
+        }
+        
+        .product {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .product-image {
+            aspect-ratio: 1;
+            background-color: #e0e0e0;
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-dark);
+            font-weight: bold;
+            box-shadow: var(--shadow);
+        }
+        
+        .product-details h1 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+        }
+        
+        .product-description {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        
+        .pricing-section {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+        
+        .size-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .size-option {
+            padding: 0.75rem 1.25rem;
+            border: 2px solid #ddd;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+        
+        .size-option:hover {
+            border-color: var(--primary-light);
+            background-color: rgba(89, 13, 140, 0.05);
+        }
+        
+        .size-option.selected {
+            background-color: var(--primary);
+            color: var(--text-light);
+            border-color: var(--primary);
+            transform: scale(1.05);
+            box-shadow: var(--shadow);
+        }
+        
+        .price-display {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin: 1.5rem 0;
+            text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.1);
+        }
+        
+        .checkout-section {
+            margin-top: 2rem;
+        }
+        
+        .payment-options {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .payment-btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            box-shadow: var(--shadow);
+            min-width: 200px;
+        }
+        
+        .google-pay {
+            background-color: #000;
+            color: #fff;
+        }
+        
+        .cash-app {
+            background-color: #00D632;
+            color: #fff;
+        }
+        
+        .payment-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .payment-btn:active {
+            transform: translateY(-1px);
+        }
+        
+        footer {
+            background-color: var(--primary);
+            color: var(--text-light);
+            padding: 1rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .product {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-content {
+                justify-content: center;
+            }
+            
+            .product-image {
+                max-height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo"><img src="jesus.png" alt="Purple Jesus Logo"></div>
+                <div class="brand-name">Big Willy's Fabric Dye Emporium</div>
+            </div>
+        </div>
+    </header>
+    
+    <main class="container">
+        <section class="product">
+            <div class="product-image">
+                <img src="purple.jpg" alt="Purple Jesus Fabric Dye" style="max-width: 100%; max-height: 100%; border-radius: var(--border-radius);">
+            </div>
+            
+            <div class="product-details">
+                <h1>Purple Jesus Fabric Dye</h1>
+                <p class="product-description">
+                    Experience the divine vibrancy of our exclusive Purple Jesus Fabric Dye. This proprietary secret recipe 
+                    delivers an unmatched rich purple hue that stands the test of time. Meticulously crafted for both 
+                    professional and home use, this premium dye transforms ordinary fabrics into extraordinary works of art.
+                </p>
+                
+                <div class="pricing-section">
+                    <h2>Choose Your Size</h2>
+                    <div class="size-options">
+                        <div class="size-option" data-size="300g" data-price="175">300g</div>
+                        <div class="size-option" data-size="500g" data-price="270">500g</div>
+                        <div class="size-option" data-size="1kg" data-price="495">1kg</div>
+                        <div class="size-option" data-size="2kg" data-price="890">2kg</div>
+                        <div class="size-option" data-size="3kg" data-price="1250">3kg</div>
+                        <div class="size-option" data-size="5kg" data-price="1950">5kg</div>
+                        <div class="size-option" data-size="10kg" data-price="3600">10kg</div>
+                        <div class="size-option" data-size="20kg" data-price="6500">20kg</div>
+                    </div>
+                    
+                    <div class="price-display">$175.00</div>
+                    
+                    <div class="checkout-section">
+                        <h2>Express Checkout</h2>
+                        <div class="payment-options">
+                            <button class="payment-btn google-pay">
+                                Pay with Google Pay
+                            </button>
+                            <button class="payment-btn cash-app">
+                                Pay with Cash App
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>© 2023 Big Willy's Fabric Dye Emporium. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get DOM elements
+            const sizeOptions = document.querySelectorAll('.size-option');
+            const priceDisplay = document.querySelector('.price-display');
+            const googlePayBtn = document.querySelector('.google-pay');
+            const cashAppBtn = document.querySelector('.cash-app');
+            
+            let selectedSize = '300g';
+            let selectedPrice = 175;
+            
+            console.log('Size options found:', sizeOptions.length);
+            
+            // Initialize first option as selected
+            if (sizeOptions.length > 0) {
+                sizeOptions[0].classList.add('selected');
+            }
+            
+            // Size selection
+            sizeOptions.forEach(option => {
+                option.addEventListener('click', function(e) {
+                    console.log('Size option clicked:', this.dataset.size);
+                    
+                    // Remove selected class from all options
+                    sizeOptions.forEach(opt => opt.classList.remove('selected'));
+                    
+                    // Add selected class to clicked option
+                    this.classList.add('selected');
+                    
+                    // Update selected size and price
+                    selectedSize = this.dataset.size;
+                    selectedPrice = parseFloat(this.dataset.price);
+                    
+                    // Update price display
+                    priceDisplay.textContent = `$${selectedPrice.toFixed(2)}`;
+                });
+            });
+            
+            // Try-catch block for Google Pay integration
+            try {
+                // Initialize Google Pay button
+                if (window.google && window.google.payments) {
+                    const googlePayClient = new google.payments.api.PaymentsClient({
+                        environment: 'TEST' // Change to 'PRODUCTION' when ready
+                    });
+                    
+                    googlePayBtn.addEventListener('click', function() {
+                        const paymentDataRequest = {
+                            apiVersion: 2,
+                            apiVersionMinor: 0,
+                            allowedPaymentMethods: [{
+                                type: 'CARD',
+                                parameters: {
+                                    allowedAuthMethods: ['PAN_ONLY', 'CRYPTOGRAM_3DS'],
+                                    allowedCardNetworks: ['AMEX', 'DISCOVER', 'MASTERCARD', 'VISA']
+                                },
+                                tokenizationSpecification: {
+                                    type: 'PAYMENT_GATEWAY',
+                                    parameters: {
+                                        gateway: 'YOUR_PAYMENT_GATEWAY',
+                                        gatewayMerchantId: 'YOUR_MERCHANT_ID'
+                                    }
+                                }
+                            }],
+                            merchantInfo: {
+                                merchantId: 'YOUR_MERCHANT_ID',
+                                merchantName: "Big Willy's Fabric Dye Emporium"
+                            },
+                            transactionInfo: {
+                                totalPriceStatus: 'FINAL',
+                                totalPrice: selectedPrice.toString(),
+                                currencyCode: 'USD',
+                                countryCode: 'US'
+                            }
+                        };
+                        
+                        googlePayClient.loadPaymentData(paymentDataRequest)
+                            .then(function(paymentData) {
+                                console.log('Payment authorized:', paymentData);
+                                alert('Google Pay payment processed successfully!');
+                                // In production: processPaymentOnServer(paymentData);
+                            })
+                            .catch(function(err) {
+                                console.error('Google Pay error:', err);
+                                alert('Google Pay error. See console for details.');
+                            });
+                    });
+                } else {
+                    console.warn("Google Pay API not loaded");
+                    googlePayBtn.addEventListener('click', function() {
+                        alert("Google Pay integration requires merchant setup. See instructions.");
+                    });
+                }
+            } catch (error) {
+                console.error("Google Pay initialization error:", error);
+                googlePayBtn.addEventListener('click', function() {
+                    alert("Google Pay integration requires merchant setup. See instructions.");
+                });
+            }
+            
+            // Cash App integration
+            cashAppBtn.addEventListener('click', function() {
+                alert(`Cash App payment for Purple Jesus Fabric Dye (${selectedSize}) - $${selectedPrice.toFixed(2)} requires merchant setup. See instructions.`);
+            });
+        });
+    </script>
+    
+    <!-- Load Google Pay API -->
+    <script async src="https://pay.google.com/gp/p/js/pay.js"></script>
+</body>
+</html>

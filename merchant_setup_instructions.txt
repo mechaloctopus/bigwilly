@@ -1,0 +1,98 @@
+# MERCHANT SETUP INSTRUCTIONS FOR PAYMENT PROCESSING
+# Big Willy's Fabric Dye Emporium
+
+Dear Merchant,
+
+This document contains step-by-step instructions for setting up payment processing for your website. Please follow these instructions carefully and collect the required information that your developer will need.
+
+## GOOGLE PAY SETUP
+
+1. CREATE A GOOGLE MERCHANT ACCOUNT
+   - Go to: https://pay.google.com/business/console/
+   - Sign in with your Google account (create one if you don't have one)
+   - Click "Sign up for Google Pay" if prompted
+   - Select "Business Account"
+
+2. COMPLETE BUSINESS VERIFICATION
+   - Enter your business name: "Big Willy's Fabric Dye Emporium"
+   - Provide your business address, phone number, and email
+   - Enter your business tax ID/EIN (employer identification number)
+   - Upload required verification documents (business license, tax documents)
+   - Complete identity verification (may require photo ID)
+
+3. SET UP A PAYMENT PROCESSOR
+   Google Pay requires a payment processor. We recommend one of these:
+   
+   OPTION A: STRIPE
+   - Go to: https://stripe.com/
+   - Click "Start now" or "Create account"
+   - Enter your email, name, and create a password
+   - Enter your business details when prompted
+   - Connect your bank account for deposits
+   - In your Stripe Dashboard, go to "Developers" → "API keys"
+   
+   OPTION B: BRAINTREE (PayPal owned)
+   - Go to: https://www.braintreepayments.com/
+   - Click "Get started" or "Sign up"
+   - Complete the application with your business details
+   - Connect your bank account for deposits
+   - Access your Merchant ID and API keys from the dashboard
+
+4. INFORMATION TO PROVIDE TO YOUR DEVELOPER
+   Please provide the following to your developer:
+   
+   FROM GOOGLE PAY:
+   □ Your Google Merchant ID (found in Google Pay Business Console)
+   
+   FROM YOUR PAYMENT PROCESSOR (Stripe or Braintree):
+   □ Gateway name (Stripe or Braintree)
+   □ Merchant ID/Account ID
+   □ API keys (these are SECRET - send them securely!)
+   
+## CASH APP SETUP
+
+1. CREATE A CASH APP FOR BUSINESS ACCOUNT
+   - Download Cash App on your smartphone if you don't already have it
+   - Open Cash App and tap the profile icon
+   - Scroll down and select "Cash for Business"
+   - Follow prompts to upgrade your account to a business account
+   - If you don't have Cash App yet, sign up and then convert to business
+
+2. COMPLETE BUSINESS VERIFICATION
+   - Enter your business name: "Big Willy's Fabric Dye Emporium"
+   - Provide your business address and phone number
+   - Enter your business tax ID/EIN
+   - Connect your bank account for deposits
+   - Complete identity verification if prompted
+
+3. SET UP CASH APP API ACCESS
+   - Go to: https://developers.cash.app/
+   - Sign in with your Cash App business account
+   - Go to "My Applications" and click "Create New Application"
+   - Name the application "Big Willy's Fabric Dye Emporium"
+   - Configure the following settings:
+     * Domains: [Your website domain, e.g., bigwillysdyes.com]
+     * Redirect URLs: [Your website URL, e.g., https://bigwillysdyes.com]
+   - Accept the terms and create the application
+
+4. INFORMATION TO PROVIDE TO YOUR DEVELOPER
+   Please provide the following to your developer:
+   
+   FROM CASH APP:
+   □ Cash App Business Account $Cashtag (starts with $)
+   □ Client ID (from the developer portal)
+   □ API Key/Secret (from the developer portal)
+   □ Webhook signing secret (if available)
+
+## IMPORTANT SECURITY NOTES
+
+- NEVER share your API keys or secrets in emails or text messages
+- Use a secure method to share this information (password manager or encrypted file)
+- Do not share your personal login credentials with your developer
+- Keep a copy of all your credentials in a secure location
+- Set up two-factor authentication on all accounts if available
+
+If you have any questions or need assistance with this process, please contact your developer for guidance.
+
+Thank you,
+Your Web Development Team 
