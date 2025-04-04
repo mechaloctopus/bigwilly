@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Big Willy's Fabric Dye Emporium - Purple Jesus Fabric Dye</title>
+    <title>Big Willy's Fabric Dye Emporium - Premium Fabric Dyes</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -25,6 +25,11 @@
             --transition: all 0.3s ease;
             --max-width: 1200px;
             --section-gap: 2.5rem;
+            --yellow: #ffc107;
+            --green: #4caf50;
+            --orange: #ff9800;
+            --blue: #2196f3;
+            --purple: #9c27b0;
         }
         
         * {
@@ -65,7 +70,13 @@
         .header-content {
             display: flex;
             align-items: center;
-            justify-content: flex-start;
+            justify-content: space-between;
+            gap: 1.5rem;
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
             gap: 1.5rem;
         }
         
@@ -108,11 +119,312 @@
             color: transparent;
         }
         
+        /* Navigation */
+        .main-nav {
+            margin-left: auto;
+        }
+        
+        .nav-list {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .nav-list li a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            position: relative;
+            text-align: center;
+            display: inline-block;
+            white-space: nowrap;
+        }
+        
+        .nav-list li {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .nav-list a.two-line {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            line-height: 1.2;
+            padding: 0.5rem 0.75rem;
+        }
+        
+        .nav-list li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: var(--transition);
+            transform: translateX(-50%);
+        }
+        
+        .nav-list li a:hover::after,
+        .nav-list li a.active::after {
+            width: 80%;
+        }
+        
+        .nav-list li a:hover,
+        .nav-list li a.active {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Mobile menu toggle */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
         /* Main Content Styles */
         main {
             padding: 3rem 0;
+            flex: 1;
         }
         
+        /* Hero section */
+        .hero {
+            text-align: center;
+            margin-bottom: var(--section-gap);
+            padding: 2rem;
+            background: linear-gradient(rgba(58, 0, 104, 0.7), rgba(42, 0, 72, 0.7)), url('purple.jpg');
+            background-size: cover;
+            background-position: center;
+            border-radius: var(--border-radius);
+            color: var(--text-light);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, transparent, rgba(0, 0, 0, 0.5));
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, var(--accent-light), var(--text-light));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(to right, var(--accent), var(--primary-light));
+            color: var(--text-light);
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        /* Product catalog */
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2.2rem;
+            position: relative;
+            display: inline-block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: var(--section-gap);
+        }
+        
+        .product-card {
+            background-color: #fff;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+        
+        .product-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        
+        .product-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .product-description {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            flex-grow: 1;
+        }
+        
+        .product-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+        }
+        
+        .product-price {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+        
+        .product-action {
+            padding: 0.5rem 1rem;
+            background-color: var(--primary);
+            color: var(--text-light);
+            border: none;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .product-action:hover {
+            background-color: var(--primary-light);
+        }
+        
+        .out-of-stock-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: var(--text-light);
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            font-size: 0.9rem;
+            z-index: 2;
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            font-size: 0.9rem;
+            z-index: 2;
+        }
+        
+        .badge-purple {
+            background-color: var(--purple);
+            color: var(--text-light);
+        }
+        
+        .badge-yellow {
+            background-color: var(--yellow);
+            color: var(--text-dark);
+        }
+        
+        .badge-green {
+            background-color: var(--green);
+            color: var(--text-light);
+        }
+        
+        .badge-orange {
+            background-color: var(--orange);
+            color: var(--text-dark);
+        }
+        
+        .badge-blue {
+            background-color: var(--blue);
+            color: var(--text-light);
+        }
+        
+        /* Single product page styles are preserved from original */
         .product {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -126,257 +438,6 @@
             padding: 2.5rem;
             border: 1px solid rgba(0, 0, 0, 0.05);
             max-width: 100%;
-        }
-        
-        .product-image {
-            aspect-ratio: 1;
-            background-color: #fff;
-            border-radius: var(--border-radius);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-dark);
-            font-weight: bold;
-            box-shadow: var(--shadow-lg);
-            overflow: hidden;
-            position: relative;
-            border: 1px solid rgba(0, 0, 0, 0.06);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .product-image:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.15);
-        }
-        
-        .product-image img {
-            max-width: 100%;
-            max-height: 100%;
-            border-radius: var(--border-radius);
-            transition: transform 0.5s ease;
-        }
-        
-        .product-image:hover img {
-            transform: scale(1.03);
-        }
-        
-        .product-details {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .product-details h1 {
-            color: var(--primary);
-            margin-bottom: 0.75rem;
-            font-size: 2.5rem;
-            font-weight: 700;
-            line-height: 1.2;
-            position: relative;
-            display: inline-block;
-            border-bottom: 4px solid var(--accent);
-            padding-bottom: 10px;
-            background: linear-gradient(to right, var(--primary), var(--primary-light));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        .product-description {
-            margin: 1.5rem 0;
-            font-size: 1.05rem;
-            line-height: 1.7;
-            color: var(--text-muted);
-            border-left: 3px solid var(--accent);
-            padding-left: 1rem;
-            background-color: rgba(179, 136, 255, 0.05);
-            padding: 1.5rem;
-            border-radius: 0 var(--border-radius) var(--border-radius) 0;
-        }
-        
-        .pricing-section {
-            background-color: white;
-            padding: 2rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            margin-bottom: 2rem;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
-        }
-        
-        .pricing-section:hover {
-            transform: translateY(-5px);
-        }
-        
-        .pricing-section h2 {
-            margin-bottom: 1.5rem;
-            font-weight: 600;
-            font-size: 1.4rem;
-            color: var(--primary);
-            position: relative;
-            display: inline-block;
-            border-bottom: 3px solid var(--accent);
-            padding-bottom: 8px;
-        }
-        
-        .size-options {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-            gap: 0.7rem;
-            margin: 1.5rem 0;
-        }
-        
-        .size-option {
-            padding: 0.75rem 0.5rem;
-            border: 2px solid rgba(0, 0, 0, 0.1);
-            border-radius: var(--border-radius);
-            cursor: pointer;
-            transition: var(--transition);
-            font-weight: 500;
-            background-color: #fff;
-            position: relative;
-            overflow: hidden;
-            text-align: center;
-        }
-        
-        .size-option::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: 0.5s;
-        }
-        
-        .size-option:hover {
-            border-color: var(--primary-light);
-            transform: translateY(-3px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        
-        .size-option:hover::before {
-            left: 100%;
-        }
-        
-        .size-option.selected {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            color: var(--text-light);
-            border-color: var(--primary);
-            transform: scale(1.05);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-            font-weight: 600;
-        }
-        
-        .price-display {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin: 1.5rem 0;
-            text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.05);
-            display: flex;
-            align-items: center;
-            position: relative;
-            background-color: rgba(179, 136, 255, 0.08);
-            padding: 1rem;
-            border-radius: var(--border-radius);
-            justify-content: center;
-        }
-        
-        .price-display::before {
-            content: '';
-            width: 10px;
-            height: 10px;
-            background-color: var(--accent);
-            border-radius: 50%;
-            margin-right: 10px;
-            box-shadow: 0 0 10px var(--accent);
-        }
-        
-        .checkout-section {
-            margin-top: 2rem;
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-            padding-top: 1.5rem;
-        }
-        
-        .checkout-section h2 {
-            border-bottom: none;
-            margin-bottom: 1rem;
-        }
-        
-        .payment-options {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-        
-        .payment-btn {
-            padding: 1rem 1.5rem;
-            border: none;
-            border-radius: var(--border-radius);
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.75rem;
-            box-shadow: var(--shadow);
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-        
-        .payment-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transform: translateX(-100%);
-            transition: 0.6s;
-            z-index: -1;
-        }
-        
-        .payment-btn::after {
-            content: '→';
-            position: absolute;
-            right: 1.5rem;
-            opacity: 0;
-            transition: var(--transition);
-        }
-        
-        .payment-btn:hover::before {
-            transform: translateX(100%);
-        }
-        
-        .payment-btn:hover::after {
-            opacity: 1;
-        }
-        
-        .google-pay {
-            background-color: #000;
-            color: #fff;
-        }
-        
-        .cash-app {
-            background-color: #00D632;
-            color: #fff;
-        }
-        
-        .payment-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-            padding-right: 2rem;
-        }
-        
-        .payment-btn:active {
-            transform: translateY(-1px);
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
         }
         
         /* Footer Styles */
@@ -407,84 +468,96 @@
         
         /* Responsive Design */
         @media (max-width: 992px) {
-            :root {
-                --section-gap: 2rem;
+            .hero h1 {
+                font-size: 2.5rem;
             }
             
-            .brand-name {
-                font-size: 1.6rem;
+            .product-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             }
             
-            .product-details h1 {
-                font-size: 2.2rem;
+            .nav-list {
+                gap: 0.75rem;
             }
             
-            .product {
-                padding: 2rem;
-                gap: 2.5rem;
+            .nav-list li a {
+                padding: 0.5rem 0.75rem;
+                font-size: 0.95rem;
             }
         }
         
         @media (max-width: 768px) {
-            :root {
-                --section-gap: 1.5rem;
+            .header-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
             }
             
+            .nav-list {
+                margin-top: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .product-grid {
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+                gap: 1.5rem;
+            }
+            
+            /* Original responsive code for single product */
             .product {
                 grid-template-columns: 1fr;
                 padding: 1.5rem;
                 gap: 2rem;
             }
-            
-            .header-content {
-                justify-content: center;
+        }
+        
+        @media (max-width: 576px) {
+            .nav-list {
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: var(--primary);
+                padding: 1rem;
+                box-shadow: var(--shadow);
+                display: none;
+                z-index: 10;
             }
             
-            .product-image {
-                max-height: 350px;
+            .nav-list.active {
+                display: flex;
             }
             
-            .product-details h1 {
-                text-align: center;
-                display: block;
-                margin-left: auto;
-                margin-right: auto;
-            }
-            
-            .payment-options {
-                grid-template-columns: 1fr;
-            }
-            
-            .payment-btn {
+            .nav-list li {
                 width: 100%;
             }
             
-            .size-options {
-                grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-            }
-            
-            .size-option {
-                padding: 0.7rem 0.5rem;
-                font-size: 0.9rem;
-            }
-            
-            .price-display {
-                justify-content: center;
-            }
-            
-            .product-description {
+            .nav-list li a,
+            .nav-list a.two-line {
+                display: block;
                 text-align: center;
-                border-left: none;
-                border-top: 3px solid var(--accent);
-                border-radius: var(--border-radius);
-                padding: 1.5rem 1rem;
+                padding: 0.75rem 1rem;
+                line-height: 1.3;
             }
-        }
-        
-        @media (max-width: 480px) {
-            :root {
-                --spacing: 0.75rem;
-                --section-gap: 1.25rem;
+            
+            .nav-list a.two-line br {
+                display: none;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .product-grid {
+                grid-template-columns: 1fr;
             }
             
             .logo {
@@ -493,103 +566,16 @@
             }
             
             .brand-name {
-                font-size: 1.3rem;
+                font-size: 1.5rem;
             }
             
-            .product {
-                padding: 1.25rem;
-                gap: 1.5rem;
+            .hero {
+                padding: 1.5rem;
             }
             
-            .product-details h1 {
+            .hero h1 {
                 font-size: 1.8rem;
             }
-            
-            .product-description {
-                font-size: 0.95rem;
-                padding: 1.25rem 1rem;
-            }
-            
-            .pricing-section {
-                padding: 1.25rem;
-            }
-            
-            .pricing-section h2 {
-                font-size: 1.2rem;
-            }
-            
-            .price-display {
-                font-size: 2rem;
-            }
-            
-            .payment-btn {
-                font-size: 1rem;
-                padding: 0.9rem 1rem;
-            }
-            
-            .size-options {
-                gap: 0.5rem;
-                justify-content: center;
-                grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
-            }
-            
-            .size-option {
-                padding: 0.6rem 0.5rem;
-                font-size: 0.85rem;
-                min-width: 60px;
-                text-align: center;
-            }
-            
-            .checkout-section h2 {
-                font-size: 1.1rem;
-            }
-            
-            main {
-                padding: 1.5rem 0;
-            }
-        }
-        
-        /* Loading Animation */
-        @keyframes pulse {
-            0% { transform: scale(0.95); opacity: 0.7; }
-            50% { transform: scale(1); opacity: 1; }
-            100% { transform: scale(0.95); opacity: 0.7; }
-        }
-        
-        .loading-indicator {
-            display: none;
-            animation: pulse 1.5s infinite ease-in-out;
-        }
-        
-        /* Scroll Animation */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-        
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .product::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, var(--primary), var(--accent), var(--primary));
-            z-index: -1;
-            border-radius: calc(var(--border-radius) + 2px);
-            opacity: 0.5;
-            pointer-events: none;
         }
     </style>
 </head>
@@ -597,55 +583,124 @@
     <header>
         <div class="container">
             <div class="header-content">
-                <div class="logo"><img src="jesus.png" alt="Purple Jesus Logo"></div>
-                <div class="brand-name">Big Willy's Fabric Dye Emporium</div>
+                <div class="header-left">
+                    <div class="logo"><img src="jesus.png" alt="Big Willy's Logo"></div>
+                    <div class="brand-name">Big Willy's Fabric Dye Emporium</div>
+                </div>
+                <nav class="main-nav">
+                    <button class="mobile-menu-toggle">☰</button>
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="active">Home</a></li>
+                        <li><a href="product.html?product=purple-jesus" class="two-line">Purple<br>Jesus</a></li>
+                        <li><a href="product.html?product=yellow-buddha" class="two-line">Yellow<br>Buddha</a></li>
+                        <li><a href="product.html?product=green-tarzan" class="two-line">Green<br>Tarzan</a></li>
+                        <li><a href="product.html?product=orange-thoth" class="two-line">Orange<br>Thoth</a></li>
+                        <li><a href="product.html?product=blue-osiris" class="two-line">Blue<br>Osiris</a></li>
+                    </ul>
+                </nav>
             </div>
         </div>
     </header>
     
-    <main class="container">
-        <section class="product">
-            <div class="product-image fade-in">
-                <img src="purple.jpg" alt="Purple Jesus Fabric Dye">
-            </div>
+    <main>
+        <div class="container">
+            <section class="hero">
+                <div class="hero-content">
+                    <h1>Extraordinary Fabric Dyes</h1>
+                    <p>Transform ordinary fabrics into vibrant works of art with our premium fabric dyes. Each color is meticulously crafted with our proprietary formula for unmatched quality and durability.</p>
+                    <a href="#products" class="cta-button">Explore Our Collection</a>
+                </div>
+            </section>
             
-            <div class="product-details">
-                <h1 class="fade-in">Purple Jesus Fabric Dye</h1>
-                <p class="product-description fade-in">
-                    Experience the divine vibrancy of our exclusive Purple Jesus Fabric Dye. This proprietary secret recipe 
-                    delivers an unmatched rich purple hue that stands the test of time. Meticulously crafted for both 
-                    professional and home use, this premium dye transforms ordinary fabrics into extraordinary works of art.
-                </p>
-                
-                <div class="pricing-section fade-in">
-                    <h2>Choose Your Size</h2>
-                    <div class="size-options">
-                        <div class="size-option" data-size="300g" data-price="175">300g</div>
-                        <div class="size-option" data-size="500g" data-price="270">500g</div>
-                        <div class="size-option" data-size="1kg" data-price="495">1kg</div>
-                        <div class="size-option" data-size="2kg" data-price="890">2kg</div>
-                        <div class="size-option" data-size="3kg" data-price="1250">3kg</div>
-                        <div class="size-option" data-size="5kg" data-price="1950">5kg</div>
-                        <div class="size-option" data-size="10kg" data-price="3600">10kg</div>
-                        <div class="size-option" data-size="20kg" data-price="6500">20kg</div>
+            <section id="products">
+                <h2 class="section-title">Our Divine Collection</h2>
+                <div class="product-grid">
+                    <!-- Purple Jesus - In Stock -->
+                    <div class="product-card">
+                        <span class="product-badge badge-purple">Purple</span>
+                        <div class="product-image">
+                            <img src="purple.jpg" alt="Purple Jesus Fabric Dye">
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">Purple Jesus Fabric Dye</h3>
+                            <p class="product-description">Experience the divine vibrancy of our exclusive Purple Jesus Fabric Dye. This proprietary secret recipe delivers an unmatched rich purple hue.</p>
+                            <div class="product-meta">
+                                <div class="product-price">From $175.00</div>
+                                <a href="product.html?product=purple-jesus" class="product-action">View</a>
+                            </div>
+                        </div>
                     </div>
                     
-                    <div class="price-display">$175.00</div>
+                    <!-- Yellow Buddha - Out of Stock -->
+                    <div class="product-card">
+                        <span class="product-badge badge-yellow">Yellow</span>
+                        <span class="out-of-stock-badge">Out of Stock</span>
+                        <div class="product-image">
+                            <img src="yellow.jpg" alt="Yellow Buddha Fabric Dye">
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">Yellow Buddha Fabric Dye</h3>
+                            <p class="product-description">Achieve enlightened fabrics with our Yellow Buddha Dye. This serene golden yellow brings warmth and wisdom to any textile project.</p>
+                            <div class="product-meta">
+                                <div class="product-price">From $165.00</div>
+                                <a href="product.html?product=yellow-buddha" class="product-action">View</a>
+                            </div>
+                        </div>
+                    </div>
                     
-                    <div class="checkout-section">
-                        <h2>Express Checkout</h2>
-                        <div class="payment-options">
-                            <button class="payment-btn google-pay">
-                                Pay with Google Pay
-                            </button>
-                            <button class="payment-btn cash-app">
-                                Pay with Cash App
-                            </button>
+                    <!-- Green Tarzan - Out of Stock -->
+                    <div class="product-card">
+                        <span class="product-badge badge-green">Green</span>
+                        <span class="out-of-stock-badge">Out of Stock</span>
+                        <div class="product-image">
+                            <img src="green.jpg" alt="Green Tarzan Fabric Dye">
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">Green Tarzan Fabric Dye</h3>
+                            <p class="product-description">Swing into wild creativity with our Green Tarzan Dye. This jungle-inspired verdant hue brings untamed vibrancy to your fabrics.</p>
+                            <div class="product-meta">
+                                <div class="product-price">From $170.00</div>
+                                <a href="product.html?product=green-tarzan" class="product-action">View</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Orange Thoth - Out of Stock -->
+                    <div class="product-card">
+                        <span class="product-badge badge-orange">Orange</span>
+                        <span class="out-of-stock-badge">Out of Stock</span>
+                        <div class="product-image">
+                            <img src="orange.jpg" alt="Orange Thoth Fabric Dye">
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">Orange Thoth Fabric Dye</h3>
+                            <p class="product-description">Channel ancient wisdom with our Orange Thoth Dye. This vibrant orange infuses your textiles with the knowledge and creativity of the Egyptian deity.</p>
+                            <div class="product-meta">
+                                <div class="product-price">From $160.00</div>
+                                <a href="product.html?product=orange-thoth" class="product-action">View</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Blue Osiris - Out of Stock -->
+                    <div class="product-card">
+                        <span class="product-badge badge-blue">Blue</span>
+                        <span class="out-of-stock-badge">Out of Stock</span>
+                        <div class="product-image">
+                            <img src="blue.jpg" alt="Blue Osiris Fabric Dye">
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">Blue Osiris Fabric Dye</h3>
+                            <p class="product-description">Resurrect your fabrics with the celestial Blue Osiris Dye. This rich blue tone captures the eternal power and majesty of the afterlife.</p>
+                            <div class="product-meta">
+                                <div class="product-price">From $180.00</div>
+                                <a href="product.html?product=blue-osiris" class="product-action">View</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </div>
     </main>
     
     <footer>
@@ -656,177 +711,38 @@
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Add product border effect
-            const product = document.querySelector('.product');
-            product.addEventListener('mousemove', function(e) {
-                const rect = this.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                // Update the border gradient position
-                this.style.setProperty('--x', x + 'px');
-                this.style.setProperty('--y', y + 'px');
-            });
+            // Mobile menu toggle
+            const menuToggle = document.querySelector('.mobile-menu-toggle');
+            const navList = document.querySelector('.nav-list');
             
-            // Fade in animations
-            setTimeout(function() {
-                const fadeElements = document.querySelectorAll('.fade-in');
-                fadeElements.forEach((element, index) => {
-                    setTimeout(() => {
-                        element.classList.add('visible');
-                    }, 150 * index);
-                });
-            }, 300);
-            
-            // Get DOM elements
-            const sizeOptions = document.querySelectorAll('.size-option');
-            const priceDisplay = document.querySelector('.price-display');
-            const googlePayBtn = document.querySelector('.google-pay');
-            const cashAppBtn = document.querySelector('.cash-app');
-            
-            let selectedSize = '300g';
-            let selectedPrice = 175;
-            
-            console.log('Size options found:', sizeOptions.length);
-            
-            // Initialize first option as selected
-            if (sizeOptions.length > 0) {
-                sizeOptions[0].classList.add('selected');
-            }
-            
-            // Size selection
-            sizeOptions.forEach(option => {
-                option.addEventListener('click', function(e) {
-                    console.log('Size option clicked:', this.dataset.size);
-                    
-                    // Remove selected class from all options
-                    sizeOptions.forEach(opt => opt.classList.remove('selected'));
-                    
-                    // Add selected class to clicked option
-                    this.classList.add('selected');
-                    
-                    // Update selected size and price
-                    selectedSize = this.dataset.size;
-                    selectedPrice = parseFloat(this.dataset.price);
-                    
-                    // Update price display with animation
-                    priceDisplay.style.opacity = 0;
-                    setTimeout(() => {
-                        priceDisplay.textContent = `$${selectedPrice.toFixed(2)}`;
-                        priceDisplay.style.opacity = 1;
-                    }, 200);
-                });
-            });
-            
-            // Try-catch block for Google Pay integration
-            try {
-                // Initialize Google Pay button
-                if (window.google && window.google.payments) {
-                    const googlePayClient = new google.payments.api.PaymentsClient({
-                        environment: 'TEST' // Change to 'PRODUCTION' when ready
-                    });
-                    
-                    googlePayBtn.addEventListener('click', function() {
-                        // Add loading indicator
-                        const originalText = this.innerHTML;
-                        this.innerHTML = '<div class="loading-indicator">Processing...</div>';
-                        this.classList.add('processing');
-                        
-                        const paymentDataRequest = {
-                            apiVersion: 2,
-                            apiVersionMinor: 0,
-                            allowedPaymentMethods: [{
-                                type: 'CARD',
-                                parameters: {
-                                    allowedAuthMethods: ['PAN_ONLY', 'CRYPTOGRAM_3DS'],
-                                    allowedCardNetworks: ['AMEX', 'DISCOVER', 'MASTERCARD', 'VISA']
-                                },
-                                tokenizationSpecification: {
-                                    type: 'PAYMENT_GATEWAY',
-                                    parameters: {
-                                        gateway: 'YOUR_PAYMENT_GATEWAY',
-                                        gatewayMerchantId: 'YOUR_MERCHANT_ID'
-                                    }
-                                }
-                            }],
-                            merchantInfo: {
-                                merchantId: 'YOUR_MERCHANT_ID',
-                                merchantName: "Big Willy's Fabric Dye Emporium"
-                            },
-                            transactionInfo: {
-                                totalPriceStatus: 'FINAL',
-                                totalPrice: selectedPrice.toString(),
-                                currencyCode: 'USD',
-                                countryCode: 'US'
-                            }
-                        };
-                        
-                        googlePayClient.loadPaymentData(paymentDataRequest)
-                            .then(function(paymentData) {
-                                console.log('Payment authorized:', paymentData);
-                                alert('Google Pay payment processed successfully!');
-                                // In production: processPaymentOnServer(paymentData);
-                            })
-                            .catch(function(err) {
-                                console.error('Google Pay error:', err);
-                                alert('Google Pay error. See console for details.');
-                            })
-                            .finally(function() {
-                                // Restore button text
-                                googlePayBtn.innerHTML = originalText;
-                                googlePayBtn.classList.remove('processing');
-                            });
-                    });
-                } else {
-                    console.warn("Google Pay API not loaded");
-                    googlePayBtn.addEventListener('click', function() {
-                        alert("Google Pay integration requires merchant setup. See instructions.");
-                    });
-                }
-            } catch (error) {
-                console.error("Google Pay initialization error:", error);
-                googlePayBtn.addEventListener('click', function() {
-                    alert("Google Pay integration requires merchant setup. See instructions.");
+            if (menuToggle) {
+                menuToggle.addEventListener('click', function() {
+                    navList.classList.toggle('active');
                 });
             }
             
-            // Cash App integration
-            cashAppBtn.addEventListener('click', function() {
-                // Add loading indicator
-                const originalText = this.innerHTML;
-                this.innerHTML = '<div class="loading-indicator">Processing...</div>';
-                
-                setTimeout(() => {
-                    alert(`Cash App payment for Purple Jesus Fabric Dye (${selectedSize}) - $${selectedPrice.toFixed(2)} requires merchant setup. See instructions.`);
-                    this.innerHTML = originalText;
-                }, 500);
-            });
-            
-            // Add intersection observer for scroll animations
-            if ('IntersectionObserver' in window) {
-                const observerOptions = {
-                    root: null,
-                    rootMargin: '0px',
-                    threshold: 0.1
-                };
-                
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('visible');
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                }, observerOptions);
-                
-                document.querySelectorAll('.fade-in').forEach(item => {
-                    observer.observe(item);
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                    
+                    // Close mobile menu if open
+                    if (navList.classList.contains('active')) {
+                        navList.classList.remove('active');
+                    }
                 });
-            }
+            });
         });
     </script>
-    
-    <!-- Load Google Pay API -->
-    <script async src="https://pay.google.com/gp/p/js/pay.js"></script>
 </body>
 </html>
