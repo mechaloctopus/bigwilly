@@ -4,47 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Big Willy's Fabric Dye Emporium - Purple Jesus Fabric Dye</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #3a0068;
             --primary-light: #590d8c;
-            --secondary: #f5f5f5;
-            --accent: #ffd700;
+            --primary-dark: #2a0048;
+            --secondary: #f8f8fc;
+            --accent: #b388ff;
+            --accent-light: #d4b3ff;
             --text-dark: #333;
             --text-light: #fff;
+            --text-muted: #666;
             --spacing: 1rem;
-            --border-radius: 8px;
+            --border-radius: 10px;
             --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
             --transition: all 0.3s ease;
+            --max-width: 1200px;
+            --section-gap: 2.5rem;
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
         
         body {
             background-color: var(--secondary);
             color: var(--text-dark);
             line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
         
         .container {
-            max-width: 1200px;
+            width: 100%;
+            max-width: var(--max-width);
             margin: 0 auto;
             padding: 0 var(--spacing);
         }
         
+        /* Header Styles */
         header {
-            background-color: var(--primary);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             color: var(--text-light);
-            padding: var(--spacing);
-            box-shadow: var(--shadow);
+            padding: 1.25rem var(--spacing);
+            box-shadow: var(--shadow-lg);
             position: sticky;
             top: 0;
             z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .header-content {
@@ -55,13 +70,21 @@
         }
         
         .logo {
-            width: 100px;
-            height: 100px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             overflow: hidden;
             position: relative;
             background-color: transparent;
-            box-shadow: var(--shadow);
+            box-shadow: 0 0 20px rgba(179, 136, 255, 0.3);
+            border: 2px solid var(--accent);
+            transform: translateZ(0);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .logo:hover {
+            transform: scale(1.05) translateZ(0);
+            box-shadow: 0 0 25px rgba(179, 136, 255, 0.5);
         }
         
         .logo img {
@@ -75,115 +98,264 @@
         }
         
         .brand-name {
-            font-size: 2rem;
-            font-weight: bold;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(to right, var(--accent), var(--text-light));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
         
+        /* Main Content Styles */
         main {
-            padding: 2rem 0;
+            padding: 3rem 0;
         }
         
         .product {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-bottom: 2rem;
+            gap: 3rem;
+            margin-bottom: var(--section-gap);
+            position: relative;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            padding: 2.5rem;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            max-width: 100%;
         }
         
         .product-image {
             aspect-ratio: 1;
-            background-color: #e0e0e0;
+            background-color: #fff;
             border-radius: var(--border-radius);
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--text-dark);
             font-weight: bold;
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            position: relative;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .product-image:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.15);
+        }
+        
+        .product-image img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: var(--border-radius);
+            transition: transform 0.5s ease;
+        }
+        
+        .product-image:hover img {
+            transform: scale(1.03);
+        }
+        
+        .product-details {
+            display: flex;
+            flex-direction: column;
         }
         
         .product-details h1 {
             color: var(--primary);
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
             font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            position: relative;
+            display: inline-block;
+            border-bottom: 4px solid var(--accent);
+            padding-bottom: 10px;
+            background: linear-gradient(to right, var(--primary), var(--primary-light));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
         
         .product-description {
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
             line-height: 1.7;
+            color: var(--text-muted);
+            border-left: 3px solid var(--accent);
+            padding-left: 1rem;
+            background-color: rgba(179, 136, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
         }
         
         .pricing-section {
             background-color: white;
-            padding: 1.5rem;
+            padding: 2rem;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
             margin-bottom: 2rem;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .pricing-section:hover {
+            transform: translateY(-5px);
+        }
+        
+        .pricing-section h2 {
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            font-size: 1.4rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 8px;
         }
         
         .size-options {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 0.7rem;
+            margin: 1.5rem 0;
         }
         
         .size-option {
-            padding: 0.75rem 1.25rem;
-            border: 2px solid #ddd;
+            padding: 0.75rem 0.5rem;
+            border: 2px solid rgba(0, 0, 0, 0.1);
             border-radius: var(--border-radius);
             cursor: pointer;
             transition: var(--transition);
             font-weight: 500;
+            background-color: #fff;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        
+        .size-option::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
         }
         
         .size-option:hover {
             border-color: var(--primary-light);
-            background-color: rgba(89, 13, 140, 0.05);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .size-option:hover::before {
+            left: 100%;
         }
         
         .size-option.selected {
-            background-color: var(--primary);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
             color: var(--text-light);
             border-color: var(--primary);
             transform: scale(1.05);
-            box-shadow: var(--shadow);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            font-weight: 600;
         }
         
         .price-display {
-            font-size: 2.2rem;
-            font-weight: bold;
+            font-size: 2.5rem;
+            font-weight: 700;
             color: var(--primary);
             margin: 1.5rem 0;
-            text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.1);
+            text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            position: relative;
+            background-color: rgba(179, 136, 255, 0.08);
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            justify-content: center;
+        }
+        
+        .price-display::before {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            margin-right: 10px;
+            box-shadow: 0 0 10px var(--accent);
         }
         
         .checkout-section {
             margin-top: 2rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            padding-top: 1.5rem;
+        }
+        
+        .checkout-section h2 {
+            border-bottom: none;
+            margin-bottom: 1rem;
         }
         
         .payment-options {
-            display: flex;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             gap: 1rem;
-            margin-top: 1rem;
+            margin-top: 1.5rem;
         }
         
         .payment-btn {
-            padding: 1rem 2rem;
+            padding: 1rem 1.5rem;
             border: none;
             border-radius: var(--border-radius);
             font-size: 1.1rem;
-            font-weight: bold;
+            font-weight: 600;
             cursor: pointer;
             transition: var(--transition);
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem;
+            gap: 0.75rem;
             box-shadow: var(--shadow);
-            min-width: 200px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .payment-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: translateX(-100%);
+            transition: 0.6s;
+            z-index: -1;
+        }
+        
+        .payment-btn::after {
+            content: '→';
+            position: absolute;
+            right: 1.5rem;
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .payment-btn:hover::before {
+            transform: translateX(100%);
+        }
+        
+        .payment-btn:hover::after {
+            opacity: 1;
         }
         
         .google-pay {
@@ -198,24 +370,70 @@
         
         .payment-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            padding-right: 2rem;
         }
         
         .payment-btn:active {
             transform: translateY(-1px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
         }
         
+        /* Footer Styles */
         footer {
-            background-color: var(--primary);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             color: var(--text-light);
-            padding: 1rem;
+            padding: 1.5rem 0;
             text-align: center;
-            margin-top: 2rem;
+            margin-top: auto;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
+        }
+        
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            :root {
+                --section-gap: 2rem;
+            }
+            
+            .brand-name {
+                font-size: 1.6rem;
+            }
+            
+            .product-details h1 {
+                font-size: 2.2rem;
+            }
+            
+            .product {
+                padding: 2rem;
+                gap: 2.5rem;
+            }
         }
         
         @media (max-width: 768px) {
+            :root {
+                --section-gap: 1.5rem;
+            }
+            
             .product {
                 grid-template-columns: 1fr;
+                padding: 1.5rem;
+                gap: 2rem;
             }
             
             .header-content {
@@ -223,8 +441,155 @@
             }
             
             .product-image {
-                max-height: 300px;
+                max-height: 350px;
             }
+            
+            .product-details h1 {
+                text-align: center;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .payment-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .payment-btn {
+                width: 100%;
+            }
+            
+            .size-options {
+                grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            }
+            
+            .size-option {
+                padding: 0.7rem 0.5rem;
+                font-size: 0.9rem;
+            }
+            
+            .price-display {
+                justify-content: center;
+            }
+            
+            .product-description {
+                text-align: center;
+                border-left: none;
+                border-top: 3px solid var(--accent);
+                border-radius: var(--border-radius);
+                padding: 1.5rem 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            :root {
+                --spacing: 0.75rem;
+                --section-gap: 1.25rem;
+            }
+            
+            .logo {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .brand-name {
+                font-size: 1.3rem;
+            }
+            
+            .product {
+                padding: 1.25rem;
+                gap: 1.5rem;
+            }
+            
+            .product-details h1 {
+                font-size: 1.8rem;
+            }
+            
+            .product-description {
+                font-size: 0.95rem;
+                padding: 1.25rem 1rem;
+            }
+            
+            .pricing-section {
+                padding: 1.25rem;
+            }
+            
+            .pricing-section h2 {
+                font-size: 1.2rem;
+            }
+            
+            .price-display {
+                font-size: 2rem;
+            }
+            
+            .payment-btn {
+                font-size: 1rem;
+                padding: 0.9rem 1rem;
+            }
+            
+            .size-options {
+                gap: 0.5rem;
+                justify-content: center;
+                grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+            }
+            
+            .size-option {
+                padding: 0.6rem 0.5rem;
+                font-size: 0.85rem;
+                min-width: 60px;
+                text-align: center;
+            }
+            
+            .checkout-section h2 {
+                font-size: 1.1rem;
+            }
+            
+            main {
+                padding: 1.5rem 0;
+            }
+        }
+        
+        /* Loading Animation */
+        @keyframes pulse {
+            0% { transform: scale(0.95); opacity: 0.7; }
+            50% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(0.95); opacity: 0.7; }
+        }
+        
+        .loading-indicator {
+            display: none;
+            animation: pulse 1.5s infinite ease-in-out;
+        }
+        
+        /* Scroll Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .product::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--primary), var(--accent), var(--primary));
+            z-index: -1;
+            border-radius: calc(var(--border-radius) + 2px);
+            opacity: 0.5;
+            pointer-events: none;
         }
     </style>
 </head>
@@ -240,19 +605,19 @@
     
     <main class="container">
         <section class="product">
-            <div class="product-image">
-                <img src="purple.jpg" alt="Purple Jesus Fabric Dye" style="max-width: 100%; max-height: 100%; border-radius: var(--border-radius);">
+            <div class="product-image fade-in">
+                <img src="purple.jpg" alt="Purple Jesus Fabric Dye">
             </div>
             
             <div class="product-details">
-                <h1>Purple Jesus Fabric Dye</h1>
-                <p class="product-description">
+                <h1 class="fade-in">Purple Jesus Fabric Dye</h1>
+                <p class="product-description fade-in">
                     Experience the divine vibrancy of our exclusive Purple Jesus Fabric Dye. This proprietary secret recipe 
                     delivers an unmatched rich purple hue that stands the test of time. Meticulously crafted for both 
                     professional and home use, this premium dye transforms ordinary fabrics into extraordinary works of art.
                 </p>
                 
-                <div class="pricing-section">
+                <div class="pricing-section fade-in">
                     <h2>Choose Your Size</h2>
                     <div class="size-options">
                         <div class="size-option" data-size="300g" data-price="175">300g</div>
@@ -285,12 +650,34 @@
     
     <footer>
         <div class="container">
-            <p>© 2023 Big Willy's Fabric Dye Emporium. All rights reserved.</p>
+            <p class="copyright">© 2023 Big Willy's Fabric Dye Emporium. All rights reserved.</p>
         </div>
     </footer>
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Add product border effect
+            const product = document.querySelector('.product');
+            product.addEventListener('mousemove', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                // Update the border gradient position
+                this.style.setProperty('--x', x + 'px');
+                this.style.setProperty('--y', y + 'px');
+            });
+            
+            // Fade in animations
+            setTimeout(function() {
+                const fadeElements = document.querySelectorAll('.fade-in');
+                fadeElements.forEach((element, index) => {
+                    setTimeout(() => {
+                        element.classList.add('visible');
+                    }, 150 * index);
+                });
+            }, 300);
+            
             // Get DOM elements
             const sizeOptions = document.querySelectorAll('.size-option');
             const priceDisplay = document.querySelector('.price-display');
@@ -322,8 +709,12 @@
                     selectedSize = this.dataset.size;
                     selectedPrice = parseFloat(this.dataset.price);
                     
-                    // Update price display
-                    priceDisplay.textContent = `$${selectedPrice.toFixed(2)}`;
+                    // Update price display with animation
+                    priceDisplay.style.opacity = 0;
+                    setTimeout(() => {
+                        priceDisplay.textContent = `$${selectedPrice.toFixed(2)}`;
+                        priceDisplay.style.opacity = 1;
+                    }, 200);
                 });
             });
             
@@ -336,6 +727,11 @@
                     });
                     
                     googlePayBtn.addEventListener('click', function() {
+                        // Add loading indicator
+                        const originalText = this.innerHTML;
+                        this.innerHTML = '<div class="loading-indicator">Processing...</div>';
+                        this.classList.add('processing');
+                        
                         const paymentDataRequest = {
                             apiVersion: 2,
                             apiVersionMinor: 0,
@@ -374,6 +770,11 @@
                             .catch(function(err) {
                                 console.error('Google Pay error:', err);
                                 alert('Google Pay error. See console for details.');
+                            })
+                            .finally(function() {
+                                // Restore button text
+                                googlePayBtn.innerHTML = originalText;
+                                googlePayBtn.classList.remove('processing');
                             });
                     });
                 } else {
@@ -391,8 +792,37 @@
             
             // Cash App integration
             cashAppBtn.addEventListener('click', function() {
-                alert(`Cash App payment for Purple Jesus Fabric Dye (${selectedSize}) - $${selectedPrice.toFixed(2)} requires merchant setup. See instructions.`);
+                // Add loading indicator
+                const originalText = this.innerHTML;
+                this.innerHTML = '<div class="loading-indicator">Processing...</div>';
+                
+                setTimeout(() => {
+                    alert(`Cash App payment for Purple Jesus Fabric Dye (${selectedSize}) - $${selectedPrice.toFixed(2)} requires merchant setup. See instructions.`);
+                    this.innerHTML = originalText;
+                }, 500);
             });
+            
+            // Add intersection observer for scroll animations
+            if ('IntersectionObserver' in window) {
+                const observerOptions = {
+                    root: null,
+                    rootMargin: '0px',
+                    threshold: 0.1
+                };
+                
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, observerOptions);
+                
+                document.querySelectorAll('.fade-in').forEach(item => {
+                    observer.observe(item);
+                });
+            }
         });
     </script>
     
